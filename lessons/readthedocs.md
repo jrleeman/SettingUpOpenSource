@@ -1,8 +1,9 @@
 # Read the Docs
 
-## Questions
-
 ## Objectives
+* Understand services provided by Read the Docs
+* Setup project documentation
+* Build docs on TravisCI
 
 **Duration: 30 minutes**
 
