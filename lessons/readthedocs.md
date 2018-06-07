@@ -4,5 +4,8 @@
 
 ## Objectives
 
-**Teaching:**
-**Exercises:**
+**Duration: 30 minutes**
+
+## Setting up ReadTheDocs
+
+## Building docs on Travis
