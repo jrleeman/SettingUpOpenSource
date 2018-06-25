@@ -1,5 +1,5 @@
 # Create full conda environment for development, including some useful tools
-name: devel
+name: suos
 channels:
   - conda-forge/label/testing
   - conda-forge
