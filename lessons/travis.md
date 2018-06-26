@@ -26,6 +26,7 @@
 - Configure Travis to run for our repository
 - Make a local branch
 - Create `.travis.yml`
+
 ```yml
 language: python
 sudo: false
@@ -47,6 +48,7 @@ install:
 script:
   - pytest
 ```
+
 - Individual sections (`install`, `script`) become shell scripts
 - Commit and push to remote repository; make Pull Request
 - See what the PR looks like, the status checks
@@ -56,6 +58,7 @@ script:
 - Run on Python 2.7, 3.5, 3.6
 - Install dependencies (`before_install`)
 - Use environment variable to install miniconda
+
 ```yml
 matrix:
   include:
