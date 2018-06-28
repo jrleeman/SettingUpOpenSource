@@ -42,5 +42,3 @@
 - Use git to clone repository locally
     - `git clone https://github.com/myuser/myrepo`
     - `git clone git@github.com:myuser/myrepo`
-- Download (as zip) skeleton code from: `https://github.com/jrleeman/SettingUpOpenSource`
-- Copy `hugs` directory and `setup.py` into our new repository

@@ -17,20 +17,30 @@ project, run it locally, and then run it on TravisCI. Finally, we'll check the
 test coverage on our project.
 
 ### Add (canned) library code to repository
-For us to write tests, we'll need come code to test. To save time, we've 
+For us to write tests, we'll need come code to test. To save time, we've
 provided code for a simple library in the tutorial's repository.
 
 * Download the zip of the github repository (or clone if you prefer)
-* Copy the library folder `hugs` into the base of your repository.
-* Commit and push this with `git add -A`, then `git commit -m "Adding library code"`
+  `https://github.com/jrleeman/SettingUpOpenSource
+* Copy the library folder `hugs` and `setup.py` into the base of your
+  repository.
+* Commit and push this with `git add -A`, then `git commit -m "Adding library
+  code"`
 
 The `hugs` library (**h**ugely **u**seful **g**eoscience **s**tuff)
 is a demo library that we've created for this tutorial. It contains
 some geology/geophysics and atmospheric science equations and plots
 that we can write tests for.
 
+### Activate and install hugs
+* Activate the environment we created for the workshop `conda activate suos`
+  If you didn't setup the environment before we started, run `conda env create`
+  in the root of the repository.
+* In the base directory of the repository, install an editable version of the
+  hugs library (uses `setup.py`) with `pip install -e .`
+
 ### Writing tests with PyTest
-PyTest is one of the most commonly used Python testing frameworks. We are 
+PyTest is one of the most commonly used Python testing frameworks. We are
 going to cover the basic concept of test writing and explore the test
 coverage of the `hugs` library.
 
@@ -57,7 +67,7 @@ function before fixing a reported bug.
 * First we need to install `PyTest`. Do this with `conda install PyTest
 * Verify your installation with `pytest --version`
 
---- 
+---
 
 Pytest looks for files named `test*.py` and will run the functions named
 `test*` in those files. Let's create our first test.
