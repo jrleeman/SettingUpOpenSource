@@ -29,6 +29,8 @@ def snell_angle(incoming_angle, velocity_top, velocity_bottom):
         Angle from vertical of the outgoing ray from the boundary in degrees
 
     """
+    if velocity_top == 0:
+        raise ValueError('Top layer velocity can not be zero.')
     velocity_ratio = velocity_bottom / velocity_top
     sin_of_outgoing_ray = np.sin(np.radians(incoming_angle)) * velocity_ratio
     return np.degrees(np.arcsin(sin_of_outgoing_ray))
