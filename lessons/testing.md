@@ -70,23 +70,84 @@ function before fixing a reported bug.
 ---
 
 Pytest looks for files named `test*.py` and will run the functions named
-`test*` in those files. Let's create our first test.
+`test*` in those files.
 
-### Running tests
-* Now that we're created a test, it's time to run it. Run the test with
-  `pytest` and observe the results.
-* Change something to break the test and see the results.
+* Run the current test suite with `pytest` and observe the results.
+* Change a test result so that the tests will break and run again to see
+  what a test failure looks like.
 
-**Activity** Write tests for the functions `x` and `x` and make them
-pass.
+### Creating Tests
+
+**Activity**
+* Write a test for the function `get_wind_components` to verify that it works
+  with scalar values for the speed and direction.
+* Write another test for `get_wind_components` to verify that it works on
+  an array of values. Write the array to test every 45 degrees of the compass
+  including the end-member cases of 0 degrees and 360 degrees.
+
+**Solution**
+```python
+  def test_wind_comps_basic():
+      """Test the basic wind component calculation."""
+      speed = np.array([4, 4, 4, 4, 25, 25, 25, 25, 10.])
+      dirs = np.array([0, 45, 90, 135, 180, 225, 270, 315, 360])
+      s2 = np.sqrt(2.)
+
+      u, v = get_wind_components(speed, dirs)
+
+      true_u = np.array([0, -4 / s2, -4, -4 / s2, 0, 25 / s2, 25, 25 / s2, 0])
+      true_v = np.array([-4, -4 / s2, 0, 4 / s2, 25, 25 / s2, 0, -25 / s2, -10])
+
+      assert_array_almost_equal(true_u, u, 4)
+      assert_array_almost_equal(true_v, v, 4)
+
+
+  def test_wind_comps_scalar():
+      """Test wind components calculation with scalars."""
+      u, v = get_wind_components(8, 150)
+      assert_almost_equal(u, -4, 3)
+      assert_almost_equal(v, 6.9282, 3)
+```
 
 ### Other Common Tests
-#### Test that an exception is raised
-* Use the raises helper to write a test for `x` and ensure that a
-`ValueError` is raised.
 
-#### Temporary Directories
-* When a test needs a temporary directory to write a file to, there
-  are easy ways to do this.
+#### Test that a warning is raised
+Some functions will raise warnings and we want to ensure that indeed that is
+happening. We can use `pytest.warns` to check this. It's used as a context
+manager.
+
+**Activity**
+* Add a test to verify that the `get_wind_components` function to verfiy that
+  a warning is raised when the wind direction is greater than 360 degrees. Don't
+  forget to verify that your test is working by first by using values that will
+  not raise a warning.
+
+**Solution**
+```python
+def test_warning_direction():
+    """Test that warning is raised wind direction > 360."""
+    with pytest.warns(UserWarning):
+        get_wind_components(3, 480)
+```
+
+#### Test that an exception is raised
+In cases where an exception is raised, we want to check that it indeed is as
+well. We do this similarly to the warning check using `pytest.raises` as a
+context manager.
+
+```python
+def test_snell_zero_velocity_top():
+    """That that a value error is raised with a zero velocity top layer."""
+    with pytest.raises(ValueError):
+        snell_angle(12, 0, 4000)
+```
 
 ### Coverage with coverage.py and pytest-cov
+We also want to know what the test coverage of our library is - have we missed
+anything? We can use coverage.py to check this and pytest-cov lets us do run this
+tool on all of our test suite and see the total library coverage.
+
+* Run `py.test --cov=hugs`
+* Add a function with no tests
+* Run it again
+* Remove the added function
