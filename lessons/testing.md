@@ -135,6 +135,12 @@ In cases where an exception is raised, we want to check that it indeed is as
 well. We do this similarly to the warning check using `pytest.raises` as a
 context manager.
 
+
+**Activity**
+Add a test to ensure that a `ValueError` is raised on the `snell_angle` function
+when the top layer velocity is zero.
+
+**Solution**
 ```python
 def test_snell_zero_velocity_top():
     """That that a value error is raised with a zero velocity top layer."""
