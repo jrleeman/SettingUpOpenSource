@@ -20,13 +20,48 @@ pull requests and ensures that the checks are always run.
 * Install pytest-flake8 with `conda install pytest-flake8`
 * Run the tests locally with `pytest --flake8` This will find all `.py` files
   and run the checks against them.
-* We have failures! That's okay, we'll leave them for now so we can make sure
-  our tests fail the automated build later (always a good idea) and we'll
-  ignore others in the configuration.
+* We have failures! Let's fix some.
+
+**Activity**
+Fix the flake failures, but don't worry about fixing the F403 issues in
+`plots/__init__.py`.
+
+**Solution**
+* Fix the missing newline in imports in `calc/met.py`
+* Fix the whitespace issues in `calc/tests/test_met.py`
+* Add a docstring to the plots `__init__.py`
+
+```python
+"""This module contains a variety of plotting functions."""
+```
+
+* Add a docstring to `plots/special_plot.py`
+
+```python
+"""Make a random plot of some size for science.
+
+Makes a random plot of num_points and colored randomly. While this probably
+sounds silly, it sometimes shows more patterns that some real dataself.
+
+Parameters
+----------
+num_points : integer
+    The number of random points to plot on the graph.
+seed : integer, optional
+    Seed value for the random number generator for reproducible plots.
+
+Returns
+-------
+matplotlib.figure.Figure : figure object
+matplotlib.axes._subplots.AxesSubplot : axes
+
+"""
+```
 
 ### Supressing warnings
 * While rules are great, some of them are more restrictive that we'd like. We
-  need to add some rules in `setup.cfg` to modify our flake setup.
+  need to add some rules in `setup.cfg` to modify our flake setup (or create
+  `setup.cfg` in the project root if you don't already have one).
 * First, let's add a rule to extend the maximum line length - the default of
   79 characters. It's a bit restrictive and in our opinion excessively
   limiting. Add these lines to `setup.cfg` and rerun
@@ -41,7 +76,7 @@ max-line-length = 95
 
 ```  
 [flake8]
-ignore = F405 D999
+ignore = F403
 max-line-length = 95
 ```
 
