@@ -8,8 +8,8 @@ These include:
 
 from __future__ import division
 
-import numpy as np
 import warnings
+import numpy as np
 
 
 def get_wind_speed(u, v):

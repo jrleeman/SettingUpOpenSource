@@ -1,3 +1,5 @@
+"""Setup script for installing hugs."""
+
 try:
     from setuptools import setup
 except ImportError:

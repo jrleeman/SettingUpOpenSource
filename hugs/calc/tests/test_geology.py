@@ -1,10 +1,8 @@
 """Test the `geology` module."""
 
-import numpy as np
-from numpy.testing import assert_almost_equal, assert_array_almost_equal
-import pytest
-
 from hugs.calc import snell_angle
+
+from numpy.testing import assert_almost_equal
 
 
 def test_snell():
