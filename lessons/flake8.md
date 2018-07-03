@@ -81,6 +81,7 @@ max-line-length = 95
 ```
 
 ### Add to Travis config
+* In the travis config file add the `--flake8` option to the pytest call.
 
 ### Discuss additional flake8 plugins
 * pytest-flake8 will run any additional flake plugins it finds. Here are some
