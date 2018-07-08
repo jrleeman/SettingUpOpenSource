@@ -93,6 +93,8 @@ The HUGS API
 
 - Add `api` to `index.rst`
 - Rebuild
+- Add `'sphinx.ext.napoleon'` to `extensions`
+- Rebuild
 - Exercise: Add the other functions to `api.rst`. Add separate section headers for the different modules and/or types of calculations.
 
 ### Resources
