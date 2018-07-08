@@ -59,6 +59,7 @@ License
 ```
 
 - Can also link with:
+
 ```rst
 `license file <https://raw.githubusercontent.com/jrleeman/SettingUpOpenSource/master/LICENSE>`_
 ```
@@ -79,6 +80,7 @@ License
 ### Including docstrings in HTML docs
 
 - Add `api.rst`:
+
 ```rst
 .. _api:
 
@@ -88,6 +90,7 @@ The HUGS API
 .. autofunction:: hugs.calc.get_wind_speed
 
 ```
+
 - Add `api` to `index.rst`
 - Rebuild
 - Exercise: Add the other functions to `api.rst`. Add separate section headers for the different modules and/or types of calculations.
