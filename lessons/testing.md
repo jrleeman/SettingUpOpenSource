@@ -64,7 +64,7 @@ function before fixing a reported bug.
 
 ---
 
-* First we need to install `PyTest`. Do this with `conda install PyTest
+* First we need to install `PyTest`. Do this with `conda install PyTest`
 * Verify your installation with `pytest --version`
 
 ---
