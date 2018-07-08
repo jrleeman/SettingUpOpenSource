@@ -30,6 +30,7 @@
 - How do we use this? `make html`
 - Open `docs/_build/index.html`
 - Let's clean up `index.rst` and add some text about us:
+
 ```rst
 Hugs
 ====
