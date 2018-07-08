@@ -18,9 +18,51 @@ pull requests and ensures that the checks are always run.
 
 ### pytest-flake8
 * Install pytest-flake8 with `conda install pytest-flake8`
-* Run the tests locally with `pytest --flake8` This will find all `.py` files
-  and run the checks against them.
+* Finds all `.py` files and runs the checks against them.
+
+### Discuss additional flake8 plugins
+* pytest-flake8 will run any additional flake plugins it finds. Here are some
+  of our favorites:
+
+  - flake8-builtins!=1.4.0
+  - flake8-comprehensions
+  - flake8-copyright
+  - flake8-docstrings
+  - flake8-import-order
+  - flake8-mutable
+  - flake8-pep3101
+  - flake8-print
+  - flake8-quotes
+
+### Add to Travis config
+* Add to the pip install `pytest-flake8  flake8-docstrings flake8-import-order`  
+* In the travis config file add the `--flake8` option to the pytest call.
+
+### Running locally
+* Always a good idea to run locally to save time!
 * We have failures! Let's fix some.
+
+### Supressing warnings
+* While rules are great, some of them are more restrictive that we'd like. We
+  need to add some rules in `setup.cfg` to modify our flake setup (or create
+  `setup.cfg` in the project root if you don't already have one).
+* First, let's add a rule to extend the maximum line length - the default of
+  79 characters. It's a bit restrictive and in our opinion excessively
+  limiting. Add these lines to `setup.cfg` and rerun
+
+```
+[flake8]
+max-line-length = 95
+```
+
+* Sometimes there are flake rules that we don't necessarily agree with either.
+  They can be ignored in all files by adding them to the ignore list.
+
+```  
+[flake8]
+ignore = F403
+max-line-length = 95
+```
 
 **Activity**
 Fix the flake failures, but don't worry about fixing the F403 issues in
@@ -57,42 +99,3 @@ matplotlib.axes._subplots.AxesSubplot : axes
 
 """
 ```
-
-### Supressing warnings
-* While rules are great, some of them are more restrictive that we'd like. We
-  need to add some rules in `setup.cfg` to modify our flake setup (or create
-  `setup.cfg` in the project root if you don't already have one).
-* First, let's add a rule to extend the maximum line length - the default of
-  79 characters. It's a bit restrictive and in our opinion excessively
-  limiting. Add these lines to `setup.cfg` and rerun
-
-```
-[flake8]
-max-line-length = 95
-```
-
-* Sometimes there are flake rules that we don't necessarily agree with either.
-  They can be ignored in all files by adding them to the ignore list.
-
-```  
-[flake8]
-ignore = F403
-max-line-length = 95
-```
-
-### Add to Travis config
-* In the travis config file add the `--flake8` option to the pytest call.
-
-### Discuss additional flake8 plugins
-* pytest-flake8 will run any additional flake plugins it finds. Here are some
-  of our favorites:
-
-  - flake8-builtins!=1.4.0
-  - flake8-comprehensions
-  - flake8-copyright
-  - flake8-docstrings
-  - flake8-import-order
-  - flake8-mutable
-  - flake8-pep3101
-  - flake8-print
-  - flake8-quotes
