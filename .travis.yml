@@ -1,0 +1,17 @@
+language: python
+sudo: false
+
+branches:
+    only:
+        - master
+
+python:
+    - 2.7
+    - 3.5
+    - 3.6
+
+install:
+    - pip install . flake8 pytest-flake8 flake8-docstrings flake8-import-order
+
+script:
+    - pytest --flake8
