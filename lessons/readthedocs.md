@@ -35,7 +35,9 @@ doc build going.
 ---
 **Tip**
 If you don't choose to link your GitHub account, there is a manual import
-feature. You provid the link to your repository and then manually setup the
+feature. You provide the link to your repository and then manually setup the
 web hook following the documentation.
 
 ## Building docs on Travis
+* Add `- make html` to the script step.
+* Time permitting discuss adding a build matrix item using environment variables.
